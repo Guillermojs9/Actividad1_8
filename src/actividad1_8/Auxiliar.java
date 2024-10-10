@@ -1,10 +1,13 @@
 package actividad1_8;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,5 +79,28 @@ public class Auxiliar {
             Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
         }
         return personas;
+    }
+
+    public static void writeCSVPersonas(ArrayList<Persona> personas) {
+        try {
+            LocalDateTime localDate = LocalDateTime.now();
+            int mes = localDate.getMonthValue();
+            int dia = localDate.getDayOfMonth();
+            int hora = localDate.getHour();
+            int minuto = localDate.getMinute();
+            String fecha = dia + "-" + mes;
+            String horas = hora + "-" + minuto;
+            String nombreFichero = "personal_" + fecha + "_" + horas + ".csv";
+            BufferedWriter bw = new BufferedWriter(new FileWriter("ficheros/" + nombreFichero));
+            bw.write("firstName,lastName,email,gender,country");
+            bw.newLine();
+            for (Persona p : personas) {
+                bw.write(p.getFirstName() + "," + p.getLastName() + "," + p.getEmail() + "," + p.getEmail() + "," + p.getGender() + "," + p.getCountry());
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
