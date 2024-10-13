@@ -1,4 +1,4 @@
-package actividad1_8;
+package TestPersonal;
 
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -76,9 +76,9 @@ public class Auxiliar {
                 personas.add(p);
             }
         } catch (IOException ex) {
-            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestPersonal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
-            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestPersonal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
             Logger.getLogger(Auxiliar.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -104,7 +104,7 @@ public class Auxiliar {
             }
             bw.close();
         } catch (IOException ex) {
-            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestPersonal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -117,7 +117,7 @@ public class Auxiliar {
             personasList.forEach(p -> personas.add(p));
             reader.close();
         } catch (IOException ex) {
-            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestPersonal.class.getName()).log(Level.SEVERE, null, ex);
         }
         return personas;
     }

@@ -1,4 +1,4 @@
-package actividad1_8;
+package TestPersonal;
 
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -113,11 +113,11 @@ public class Personal {
                 this.addPersona(p);
             }
         } catch (SAXException ex) {
-            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestPersonal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestPersonal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
-            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestPersonal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
