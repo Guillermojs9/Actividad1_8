@@ -1,14 +1,18 @@
 package actividad1_8;
 
+import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -102,5 +106,19 @@ public class Auxiliar {
         } catch (IOException ex) {
             Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static ArrayList<Persona> readPersonasJSON(Path path) {
+        ArrayList<Persona> personas = new ArrayList<>();
+        try {
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(path);
+            List<Persona> personasList = Arrays.asList(gson.fromJson(reader, Persona[].class));
+            personasList.forEach(p -> personas.add(p));
+            reader.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return personas;
     }
 }

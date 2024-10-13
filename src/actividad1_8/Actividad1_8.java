@@ -1,15 +1,14 @@
 package actividad1_8;
 
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class Actividad1_8 {
-
+    
     public static void main(String[] args) {
-        File f = new File("./ficheros/personal.json");
-        Personal personas = new Personal();
-        personas.addPersonasJSON(f);
-        for (int i = 0; i < personas.size(); i++) {
-            System.out.println(personas.get(i));
-        }
+        Path path = Paths.get("./ficheros/personal.json");
+        ArrayList<Persona> personas = Auxiliar.readPersonasJSON(path);
+        personas.forEach(System.out::println);
     }
 }
