@@ -64,6 +64,14 @@ public class Personal {
         return this.personas.get(index);
     }
 
+    public ArrayList<Persona> getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(ArrayList<Persona> personas) {
+        this.personas = personas;
+    }
+
     public int size() {
         return this.personas.size();
     }
