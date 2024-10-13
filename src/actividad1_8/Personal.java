@@ -1,11 +1,17 @@
 package actividad1_8;
 
+import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -54,7 +60,7 @@ public class Personal {
         return false;
     }
 
-    public Persona getPersona(int index) {
+    public Persona get(int index) {
         return this.personas.get(index);
     }
 
@@ -112,6 +118,20 @@ public class Personal {
             Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(Actividad1_8.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void addPersonasJSON(File f) {
+        try {
+            Gson gson = new Gson();
+            Reader reader;
+            reader = Files.newBufferedReader(Paths.get(f.getPath()));
+            List<Persona> personas = Arrays.asList(gson.fromJson(reader, Persona[].class));
+            for (Persona p : personas) {
+                this.personas.add(p);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Personal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -1,15 +1,15 @@
 package actividad1_8;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.io.File;
 
 public class Actividad1_8 {
 
     public static void main(String[] args) {
-        Path path = Paths.get("C:\\Users\\Mañana\\Documents\\NetBeansProjects\\Actividad1_8\\ficheros\\personal.xml");
-        ArrayList<Persona> personas = Auxiliar.readPersonasXML(path);
-        Auxiliar.writeCSVPersonas(personas);
-
+        File f = new File("./ficheros/personal.json");
+        Personal personas = new Personal();
+        personas.addPersonasJSON(f);
+        for (int i = 0; i < personas.size(); i++) {
+            System.out.println(personas.get(i));
+        }
     }
 }
